@@ -4,16 +4,16 @@
 \contentsline {chapter}{\numberline {3}The original database}{6}
 \contentsline {section}{\numberline {3.1}First impressions}{6}
 \contentsline {section}{\numberline {3.2}A huge problem}{7}
-\contentsline {section}{\numberline {3.3}On the origin of species by means of natural selection}{8}
-\contentsline {section}{\numberline {3.4}Fitness and results}{9}
-\contentsline {section}{\numberline {3.5}What about now}{10}
-\contentsline {chapter}{\numberline {4}Use of Deep Neural Networks}{11}
-\contentsline {section}{\numberline {4.1}Introduction to Deep Beliefs Networks}{11}
-\contentsline {section}{\numberline {4.2}How to extend the database}{12}
-\contentsline {section}{\numberline {4.3}Training of a DBN}{13}
-\contentsline {chapter}{\numberline {5}The experience given by this internship}{16}
-\contentsline {section}{\numberline {5.1}Integration in the team and time organisation}{16}
-\contentsline {section}{\numberline {5.2}A new experience in the research world}{17}
-\contentsline {section}{\numberline {5.3}Conferences about research}{18}
-\contentsline {section}{\numberline {5.4}A trip to Szeged}{19}
-\contentsline {chapter}{\numberline {6}Conclusion}{21}
+\contentsline {section}{\numberline {3.3}On the origin of species by means of natural selection}{9}
+\contentsline {section}{\numberline {3.4}Fitness and results}{13}
+\contentsline {section}{\numberline {3.5}What about now}{14}
+\contentsline {chapter}{\numberline {4}Use of Deep Neural Networks}{15}
+\contentsline {section}{\numberline {4.1}Introduction to Deep Beliefs Networks}{15}
+\contentsline {section}{\numberline {4.2}How to extend the database}{16}
+\contentsline {section}{\numberline {4.3}Training of a DBN}{17}
+\contentsline {chapter}{\numberline {5}The experience given by this internship}{20}
+\contentsline {section}{\numberline {5.1}Integration in the team and time organisation}{20}
+\contentsline {section}{\numberline {5.2}A new experience in the research world}{21}
+\contentsline {section}{\numberline {5.3}Conferences about research}{22}
+\contentsline {section}{\numberline {5.4}A trip to Szeged}{23}
+\contentsline {chapter}{\numberline {6}Conclusion}{25}

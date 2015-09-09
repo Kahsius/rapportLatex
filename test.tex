@@ -4,6 +4,7 @@
 \usepackage[francais]{babel}
 \usepackage{setspace}
 \usepackage{graphicx}
+\usepackage{caption}
 
 \begin{document}
 
@@ -79,56 +80,105 @@
 	
 	\chapter{The original database}
 	
-	After a hard trip from France to Spain, I finally arrived where I will have to spend the six next months. It's here, in an office with five others researchers, that I will have to break the secrets of the voice in order to product the expected diagnosis tool. A huge desktop and a computer lent by the center will be my weapons. Now is the time to discover what will be the center of my work for the next months.\\\\
 	One thing that must be known about PD is that this disease is not a binary one. Actually, it is described by a specific scale, the Unified Parkinson Disease Rating Scale (UPDRS) which is graduated from 0 to 108 and which represents the stage of the disease for the patient. A more specific description can be found in \cite{movement2003unified}. The initial goal was to create a tool that could be able to make a regression using voice features in order to predict the UPDRS of the person. We will see that the formulation of this goal is not without consequences.
 	
 		\section{First impressions}
 		
-		As in every statistical problem, the first step has been to look at the data repartition in the database. First of all, how is the database built? It contains 1470 samples of different length (the problem of the length will be discussed latter), each one described by 6373 features, and with one UPDRS score associated. The first thing to consider is the number of features, which is more than four times bigger than the number of samples. In a typical machine learning database, the number of features should be far behind the number of samples, if not, the algorithm could have some problems trying to generalize the intrinsic properties of the base. This aspect of the problem will be commented with the first experiments.
+		As in every statistical problem, the first step has been to look at the data repartition in the database. First of all, how is the database built? It contains 1470 samples of different length (the problem of the length will be discussed latter), each one described by 6373 features, and with one UPDRS score associated. The total temporal length of the database is approximately 1.4 hours. The first thing to consider is the number of features, which is more than four times bigger than the number of samples. In a typical machine learning database, the number of features should be far behind the number of samples, if not, the algorithm could have some problems trying to generalize the intrinsic properties of the base. This aspect of the problem will be commented with the first experiments.
 		After that, let's consider the repartition of the data in relation to the UPDRS label. Using Matlab (this will be the software used in the whole study), we get the following diagram:
 		
-		%%% DIAGRAMMES
+		\begin{center}
+			\begin{minipage}{.40\linewidth}
+				\includegraphics[scale=0.42]{ressources/db1}
+				\captionof{figure}{Repartition of the training data}
+			\end{minipage}
+			\hspace*{1.5cm}
+			\begin{minipage}{.40\linewidth}
+				\includegraphics[scale=0.42]{ressources/db2}
+				\captionof{figure}{Repartition of the test data}
+			\end{minipage}
+			\hspace*{0.6cm}
+		\end{center}
+		\vspace{1cm}
+
 		
-		First thing to consider: data are not uniformly distributed. Knowing that, a machine learning algorithm that will try to learn this database without modification will focus its attention on the data that represent the majority, it could be a problem if one wants the created tool to be as souple as possible. Now, just considering that the tool should only focus on the earliest stage of the disease, because that is where the healths professionals could need help to make a diagnosis, we might get interested on the samples represented with a UPDRS score between 0 and 30 (segmentation get in the French guide \cite{huang2007hybrid}). After examination of the labels, it appears that exactly 40\% of the database represent an audio recording of a patient with a UPDRS score equal or below 30, and 31,43\% with score only below 30. So a significant part of the base is about the stage that is the most interesting for the future tool.
+		First thing to consider: data are not uniformly distributed. Knowing that, a machine learning algorithm that will try to learn this database without modification will focus its attention on the data that represent the majority, it could be a problem if one wants the created tool to be as versatile as possible. Now, just considering that the tool should only focus on the earliest stage of the disease, because that is where the health professionals could need help to make a diagnosis, we might get interested on the samples represented with a UPDRS score between 0 and 30 (segmentation get in the French guide \cite{huang2007hybrid}). After examination of the labels, it appears that exactly 40\% of the database represent an audio recording of a patient with a UPDRS score equal or below 30, and 31,43\% with score only below 30. The 60\% of the datababse remaining will be helpful in order to make the algorithm understand what are the main differences between each stage of the disease. To exemplify this, we can consider a child learning what is a transportation. If he only sees cars, he will assume that all transportation are cars. However if he can see cars and motos, the child will have a wider idea of what a transportation is, and will have a better understanding of the intrinsic constitution of a transportation.
 		
 		\section{A huge problem}
 		
-		First test using Deep Beliefs Network (see Part II for theoretical aspects and new results) weren't good. Trying to generate a regression tool between the 6373 features and the UPDRS score didn't give any good result, with Root Mean Square Error (RMSE) that was so high that it is not even relevant to mention the numbers here. The fact that there are many more features that samples can be interpreted as a case of noise: the network has too much information to deal with, and it can't efficiently select which features are relevant or not use. When you want to study a human face but you also consider the color of the sky, or the temperature outside, the network try to interpret this information as useful but it only makes the global error increase.\\\\
+		First test using Deep Beliefs Network (see Part II for theoretical aspects and new results) weren't good. Trying to generate a regression tool between the 6373 features and the UPDRS score didn't give any good result, with a Root Mean Square Error (RMSE) that was so high that it is not even relevant to mention the numbers here. The fact that there are many more features than samples can be interpreted as a case of noise: the network has too much information to deal with, and it can't efficiently select which features are relevant or not to use. When you want to study a human face but you also consider the color of the sky, or the temperature outside, the network try to interpret this information as useful but it only makes the global error increase.\\\\
 		So the new problem was to proceed to a feature selection. The very first selection has been made using the correlation between each feature and the desired output. However, the results are not expected to be very good, because the relation between audio features and the UPDRS are very unlikely to be in a linear way. Here are all the correlation coefficients :
+		\\
+
+		\vspace{0.5cm}
+		\begin{center}
+			\includegraphics[scale=0.35]{ressources/corr1}
+			\captionof{figure}{Correlation of the 6373 features available in test set}
+			\vspace{1cm}
+			\includegraphics[scale=0.28]{ressources/corr2}
+			\captionof{figure}{Correlation of the 6373 features available in training set}
+		\end{center}
+
 		
-		%%% DIAGRAMME
-		
-		It appears, as expected, that the big majority (99,96\%) as an absolute correlation coefficient that is below 0,2, with a maximum of 0,34. After all, some test have still be done, but the results weren't good. The RMSE was lower than with the whole set of features, but it still remained too high to be mentioned here.
+		It appears, as expected, that the big majority (99,96\%) has an absolute correlation coefficient that is below 0,2, with a maximum of 0,34. After all, some test have still be done, but the results weren't good. The RMSE was lower than with the whole set of features, but it still remained too high to be mentioned here.
 		
 		An exhaustive search could have been envisaged, but the number of possibilities was way to high to perform such a thing. Indeed if we look at the numbers, and if we consider that a feature has only two possibles states (chosen or not chosen), the number of possibilities will be
 		
-		%%% FORMULE
+		\begin{equation}
+			2^{6373} - 1 \approx 10^{1918}
+		\end{equation}
 		
-		If each possibility could be evaluated in one nanosecond (10-9 second), the exhaustive computation would take 
+		If each possibility could be evaluated in one nanosecond ($10^{-9}$ second), the exhaustive computation would take 
 		
-		%%% FORMULE
+		\begin{equation}
+			10^{1918} * 10^{-9} s = 10^{1909} s \approx 10^{1904} years \approx 10^{1894} T
+		\end{equation}
 		
-		Well, six months may be a little short to perform such a method.
+		Where $T$ is the estimated age of the universe. Well, six months may be a little short to perform such a method.
 		
 		\section{On the origin of species by means of natural selection}
 		
-		Another way of selection had to be chosen. The one I was familiar with and which could present interesting result was the use of genetic algorithm. This kind of algorithm can be used in order to find, not necessarily the best, but at least a solution that is really close to the optimal one. This kind of algorithm is inspired by the theory of evolution of Charles Darwin. Indeed, a population will be created initially, the most efficient individuals will survive while the least adapted to the environment will die. As a living population, the remaining individuals will reproduce, introducing some mutation to the children. This cycle is repeated until an appropriate solution (individual) is found by the process.\\\\
-		Here is the principle of the algorithm. You need to have a problem, and a function (also called fitness) which will determine the “score” of the individual which represent a possible solution. An individual in a possible solution, but it doesn't have to be close to any optimum (as we don't know them). For example, for our problem, an individual can be a 6373-size binary vector that will represent if a feature i is ( individual[i] = 1) or is not (individual[i] = 0) selected for the current solution. We suppose here that the fitness is known (the choice of the fitness will be discussed later).
+		Another way of selection had to be chosen. The one I was familiar with and which could present interesting result was the use of genetic algorithm. This kind of algorithm can be used in order to find, not necessarily the best, but at least a solution that is really close to the optimal one. This kind of algorithm is inspired by the theory of evolution of Charles Darwin in \cite{darwin1859origins}. Indeed, a population will be created initially, the most efficient individuals will survive while the least adapted to the environment will die. As a living population, the remaining individuals will reproduce, introducing some mutation to the children. This cycle is repeated until an appropriate solution (individual) is found by the process.\\\\
+		Here is the principle of the algorithm. You need to have a problem, and a function (also called fitness) which will determine the “score” of the individual which represent a possible solution. An individual is a possible solution, but it doesn't have to be close to any optimum (as we don't know them, or if they even exist). For example, for our problem, an individual can be a $6373$-size binary vector that will represent if a feature i is ( $individual[i] = 1$) or is not ($individual[i] = 0$) selected for the current solution. We suppose here that the fitness is known (the choice of the fitness will be discussed later).
 		The initialization of the algorithm consists in a production of a population of N different individuals. For each individual, the algorithm compute its score using the fitness function. When it is done, a first selection is done. A fixed percentage of the population is chosen (50\% has been used here), and the percentage of the population with the highest score are kept, the others are trashed. Those 50\% will be the elite part of the population. After that, in order to create a whole new population, the remaining individuals will reproduce: two will be chosen at random, then their “genes” (which are here represented by the selection of some features) will be crossed in order to get a new individual. In order to simplify the computation cost, a section is randomly chosen, and the first part of the child consists in a copy from the beginning to section of the first parent, whereas the second and last part of the child will consist in a copy from the section to the end of the second parent. The following figure sum up the reproduction process:
 		
-		%%% SCHEMA
-		
-		Children created this way will represent 25% of the new population. Here again, the percentage is fixed at the beginning of the algorithm. The idea behind this reproduction process is that if two individuals have a relative good score, the score of their possible child is more likely to be good rather than the score of a totally random child. The same process is visible in nature, if two individuals are more adapted to their environment, their child is more likely to survive later.
+		\vspace{1cm}
+		\begin{center}
+			\includegraphics[scale=0.45]{ressources/ag1}
+			\captionof{figure}{Reproduction process for genetic algorithm}			
+		\end{center}
+
+		\vspace{1cm}
+		Children created this way will represent 25\% of the new population. Here again, the percentage is fixed at the beginning of the algorithm. The idea behind this reproduction process is that if two individuals have a relative good score, the score of their possible child is more likely to be good rather than the score of a totally random child. The same process is visible in nature, if two individuals are more adapted to their environment, their child is more likely to survive later.
 		
 		The second process that will make the population evolve to a possible optimum, is the process of mutation. As is nature, when a new individual is born, it might appears some modifications in its genotype that will modify its possible actions toward its environment. The same idea is used in genetic algorithm. A random individual is chosen in the elite part of the current population, and some mutation are randomly introduced in its genotype. The choice of a random individual rather than a child has been preferred for the simple reason of the additional computation cost that the creation of a child would have entailed. To create a mutation, a vector of the same size than the individual chosen is created, and each coordinate is randomly set to 0 or 1 using a Bernoulli distribution with a probability of success designed to put a fixed percentage of mutation in the whole genotype. Then we perform a “exclusive or” between the initial vector and the mutation vector to finally get the new individual. Here is summed up the mutation process:
 		
-		%%% FIGURE
+		\vspace{1cm}
+		\begin{center}
+			\includegraphics[scale=0.65]{ressources/ag2}
+			\captionof{figure}{Mutation process for genetic algorithm}
+		\end{center}
+		\newpage
 		
-		%%% TABLEAU XOR
+		\begin{center}
+			\begin{tabular}{|l|c|c|}
+				\hline \textbf{XOR} & \textbf{0} & \textbf{1}\\
+				\hline \textbf{0} & 0 & 1\\
+				\hline \textbf{1} & 1 & 0\\
+				\hline
+			\end{tabular}
+			\captionof{table}{Logic table of XOR}
+		\end{center}
+		\vspace{0.5cm}
 		
 		This process will create 25\% of the new population during each generation.
 		
-		%%% SCHEMA
+		\vspace{0.5cm}
+		\begin{center}
+			\includegraphics[scale=0.5]{ressources/ag3}	
+			\captionof{figure}{Full process of a genetic algorithm}
+		\end{center}
+		\vspace{1cm}
 		
 		Now, at each generation, the genetic algorithm create a whole new population of possible solutions :
 		- 50\% via elitism
@@ -143,11 +193,19 @@
 			
 			Knowing two random variables, the mutual information can be computed this way
 			
-			%%% FORMULE
+			\vspace{0.3cm}
+			\begin{equation}
+				I(X,Y) =- \sum_{x\in X}^{}\sum_{y\in Y}^{} p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+			\end{equation}
+			\vspace{0.3cm}
 			
-			So the first part of the fitness function will be the sum of all the mutual informations between each feature selected by an individual and the output. Assuming that O is the variable representing the output, we get 
+			So the first part of the fitness function will be the sum of all the mutual informations between each feature selected by an individual and the output. Assuming that $O$ is the variable representing the output, we get 
 			
-			%%% FORMULE
+			\vspace{0.3cm}
+			\begin{equation}
+				F_1 = \sum_{X_i \in features} I(X_i,O)
+			\end{equation}
+			\vspace{0.3cm}
 			
 			Now, the problem is to reduce the redundancy provided by the use of two similar variables. To achieve this, the mutual information will be used again. Indeed, the redundancy between two variables can be interpreted as the information that each variable can provide to each other. Knowing that, the term that will represent the redundancy in the set of features of an individual will be
 			

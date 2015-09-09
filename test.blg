@@ -5,45 +5,45 @@ The style file: plain.bst
 Database file #1: biblio.bib
 Warning--empty journal in chahkandifeature
 Warning--empty year in chahkandifeature
-You've used 8 entries,
+You've used 9 entries,
             2118 wiz_defined-function locations,
-            550 strings with 5876 characters,
-and the built_in function-call counts, 3037 in all, are:
-= -- 292
-> -- 174
-< -- 2
-+ -- 71
-- -- 60
-* -- 247
-:= -- 518
-add.period$ -- 24
-call.type$ -- 8
-change.case$ -- 52
+            556 strings with 5984 characters,
+and the built_in function-call counts, 3326 in all, are:
+= -- 322
+> -- 181
+< -- 3
++ -- 74
+- -- 62
+* -- 258
+:= -- 563
+add.period$ -- 27
+call.type$ -- 9
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 96
-empty$ -- 210
-format.name$ -- 60
-if$ -- 609
+cite$ -- 11
+duplicate$ -- 114
+empty$ -- 233
+format.name$ -- 62
+if$ -- 676
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 8
-newline$ -- 42
-num.names$ -- 16
-pop$ -- 48
+int.to.str$ -- 9
+missing$ -- 9
+newline$ -- 47
+num.names$ -- 18
+pop$ -- 53
 preamble$ -- 1
-purify$ -- 44
+purify$ -- 47
 quote$ -- 0
-skip$ -- 67
+skip$ -- 82
 stack$ -- 0
-substring$ -- 194
-swap$ -- 16
-text.length$ -- 2
+substring$ -- 205
+swap$ -- 24
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
+type$ -- 36
 warning$ -- 2
-while$ -- 28
-width$ -- 9
-write$ -- 87
+while$ -- 31
+width$ -- 10
+write$ -- 98
 (There were 2 warnings)

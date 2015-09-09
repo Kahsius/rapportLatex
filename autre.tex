@@ -1,0 +1,35 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{setspace}
+
+\begin{document}
+	\begin{titlepage} 
+		\begin{center} % Upper part of the page. The '~' is needed because \\ % only works if a paragraph has started. 
+
+			\textsc{\LARGE University of Beer}\\[1.5cm] 
+			\textsc{\Large Final year project}\\[0.5cm] % Title 
+			~ \\[0.4cm] 
+			{ \huge \bfseries Lager brewing techniques \\[0.4cm] } 
+			~ \\[1.5cm] % Author and supervisor 
+			\noindent 
+
+			\begin{minipage}[t]{0.4\textwidth} 
+				\begin{flushleft} 
+					\large \emph{Author:}\\ John \textsc{Smith} 
+				\end{flushleft} 
+			\end{minipage}% 
+
+			\begin{minipage}[t]{0.4\textwidth} 
+				\begin{flushright} 
+					\large \emph{Supervisor:} \\ Dr.~Mark \textsc{Brown} 
+				\end{flushright} 
+			\end{minipage} 
+
+			\vfill % Bottom of the page 
+			{\large \today} 
+
+		\end{center} 
+	\end{titlepage}
+\end{document}

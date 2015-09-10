@@ -1,4 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{updrsguide}
+Guide d'évaluation de l'updrs.
+\newblock \url{http://www.cofemer.fr/UserFiles/File/ECH.2.5.1.UPDRSa.pdf}.
+
+\bibitem{bengio2009justifying}
+Yoshua Bengio and Olivier Delalleau.
+\newblock Justifying and generalizing contrastive divergence.
+\newblock {\em Neural computation}, 21(6):1601--1621, 2009.
 
 \bibitem{chahkandifeature}
 Vahid Chahkandi, Mehrdad Jalali, Mahsa Mirshahi, and Ali Hosseini.
@@ -10,16 +19,45 @@ Charles Darwin.
 \newblock On the origins of species by means of natural selection.
 \newblock {\em London: Murray}, page 247, 1859.
 
+\bibitem{hinton2010practical}
+Geoffrey Hinton.
+\newblock A practical guide to training restricted boltzmann machines.
+\newblock {\em Momentum}, 9(1):926, 2010.
+
+\bibitem{hinton1995wake}
+Geoffrey~E Hinton, Peter Dayan, Brendan~J Frey, and Radford~M Neal.
+\newblock The" wake-sleep" algorithm for unsupervised neural networks.
+\newblock {\em Science}, 268(5214):1158--1161, 1995.
+
 \bibitem{hinton2006fast}
 Geoffrey~E Hinton, Simon Osindero, and Yee-Whye Teh.
 \newblock A fast learning algorithm for deep belief nets.
 \newblock {\em Neural computation}, 18(7):1527--1554, 2006.
+
+\bibitem{hinton2006reducing}
+Geoffrey~E Hinton and Ruslan~R Salakhutdinov.
+\newblock Reducing the dimensionality of data with neural networks.
+\newblock {\em Science}, 313(5786):504--507, 2006.
 
 \bibitem{huang2007hybrid}
 Jinjie Huang, Yunze Cai, and Xiaoming Xu.
 \newblock A hybrid genetic algorithm for feature selection wrapper based on
   mutual information.
 \newblock {\em Pattern Recognition Letters}, 28(13):1825--1844, 2007.
+
+\bibitem{lee2013pseudo}
+Dong-Hyun Lee.
+\newblock Pseudo-label: The simple and efficient semi-supervised learning
+  method for deep neural networks.
+\newblock In {\em Workshop on Challenges in Representation Learning, ICML},
+  volume~3, 2013.
+
+\bibitem{lee2009convolutional}
+Honglak Lee, Roger Grosse, Rajesh Ranganath, and Andrew~Y Ng.
+\newblock Convolutional deep belief networks for scalable unsupervised learning
+  of hierarchical representations.
+\newblock In {\em Proceedings of the 26th Annual International Conference on
+  Machine Learning}, pages 609--616. ACM, 2009.
 
 \bibitem{little2006nonlinear}
 Max Little, Patrick McSharry, Irene Moroz, and Stephen Roberts.
@@ -28,6 +66,12 @@ Max Little, Patrick McSharry, Irene Moroz, and Stephen Roberts.
   Proceedings. 2006 IEEE International Conference on}, volume~2, pages II--II.
   IEEE, 2006.
 
+\bibitem{nagatani2014restricted}
+Keiji Nagatani and Manabu Hagiwara.
+\newblock Restricted boltzmann machine associative memory.
+\newblock In {\em Neural Networks (IJCNN), 2014 International Joint Conference
+  on}, pages 3745--3750. IEEE, 2014.
+
 \bibitem{movement2003unified}
 Movement Disorder Society Task~Force on~Rating Scales~for Parkinson's~Disease
   et~al.
@@ -35,6 +79,18 @@ Movement Disorder Society Task~Force on~Rating Scales~for Parkinson's~Disease
   recommendations.
 \newblock {\em Movement disorders: official journal of the Movement Disorder
   Society}, 18(7):738, 2003.
+
+\bibitem{ranzato2008semi}
+Marc'Aurelio Ranzato and Martin Szummer.
+\newblock Semi-supervised learning of compact document representations with
+  deep networks.
+\newblock In {\em Proceedings of the 25th international conference on Machine
+  learning}, pages 792--799. ACM, 2008.
+
+\bibitem{resnik2010gibbs}
+Philip Resnik and Eric Hardisty.
+\newblock Gibbs sampling for the uninitiated.
+\newblock Technical report, DTIC Document, 2010.
 
 \bibitem{tsanas2012novel}
 Athanasios Tsanas, Max Little, Patrick~E McSharry, Jennifer Spielman,
@@ -56,5 +112,12 @@ Athanasios Tsanas, Max~A Little, Patrick~E McSharry, and Lorraine~O Ramig.
   achieve clinically useful quantification of average parkinson's disease
   symptom severity.
 \newblock {\em Journal of the Royal Society Interface}, 8(59):842--855, 2011.
+
+\bibitem{vincent2010stacked}
+Pascal Vincent, Hugo Larochelle, Isabelle Lajoie, Yoshua Bengio, and
+  Pierre-Antoine Manzagol.
+\newblock Stacked denoising autoencoders: Learning useful representations in a
+  deep network with a local denoising criterion.
+\newblock {\em The Journal of Machine Learning Research}, 11:3371--3408, 2010.
 
 \end{thebibliography}

@@ -1,0 +1,28 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}State of the Art}{5}
+\contentsline {chapter}{\numberline {3}The original database}{6}
+\contentsline {section}{\numberline {3.1}First impressions}{6}
+\contentsline {section}{\numberline {3.2}A huge problem}{7}
+\contentsline {chapter}{\numberline {4}Use of Genetic Algorithms}{10}
+\contentsline {section}{\numberline {4.1}On the origin of species by means of natural selection}{10}
+\contentsline {section}{\numberline {4.2}Fitness and results}{13}
+\contentsline {chapter}{\numberline {5}Use of Deep Neural Networks}{16}
+\contentsline {section}{\numberline {5.1}Introduction to Restricted Boltzmann Machines}{16}
+\contentsline {section}{\numberline {5.2}Unsupervised Training}{17}
+\contentsline {section}{\numberline {5.3}Contrastive Divergence}{18}
+\contentsline {section}{\numberline {5.4}Introduction to Deep Beliefs Network}{19}
+\contentsline {subsection}{\numberline {5.4.1}Definition}{19}
+\contentsline {subsection}{\numberline {5.4.2}Unsupervised Training}{20}
+\contentsline {subsection}{\numberline {5.4.3}Fine-tuning}{20}
+\contentsline {subsection}{\numberline {5.4.4}Generation}{21}
+\contentsline {subsection}{\numberline {5.4.5}Recognition}{21}
+\contentsline {subsection}{\numberline {5.4.6}Performances}{21}
+\contentsline {section}{\numberline {5.5}How to extend the database}{22}
+\contentsline {section}{\numberline {5.6}Training of a DBN}{23}
+\contentsline {chapter}{\numberline {6}The experience given by this internship}{27}
+\contentsline {section}{\numberline {6.1}Integration in the team and time organisation}{27}
+\contentsline {section}{\numberline {6.2}A new experience in the research world}{28}
+\contentsline {section}{\numberline {6.3}Conferences about research}{29}
+\contentsline {section}{\numberline {6.4}A trip to Szeged}{29}
+\contentsline {chapter}{\numberline {7}Conclusion}{31}

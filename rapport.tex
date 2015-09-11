@@ -1,11 +1,34 @@
 \documentclass{report}
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
-\usepackage[francais]{babel}
+\usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{url}
+% Text
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\setlength{\textwidth}{13.92cm}
+\setlength{\textheight}{19.62cm}
+\setlength{\voffset}{0cm}
+\setlength{\hoffset}{0cm}
+\setlength{\oddsidemargin}{1cm}
+\setlength{\topmargin}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{1cm}
+\setlength{\footskip}{3cm}
+% Title
+\usepackage{titlesec}
+\usepackage{xcolor}
+\titleformat{\chapter}[display]
+{\normalfont\sffamily\huge\bfseries\color{rgb:red,133;green,30;blue,30}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+{\normalfont\sffamily\Large\bfseries\color{black}}
+{\thesection}{1em}{}
+
 
 \begin{document}
 
@@ -14,12 +37,12 @@
 		\begin{center}
 			\textsc{\fontsize{15pt}{5}\selectfont Statistical speech modeling for detecting pathologies affecting elder people}
 			\\[1.5cm]
-			Denis \bsc{Maurel}
+			Denis \textsc{Maurel}
 			\\[1.5cm]
 			\begin{tabular}{lcr}
 				\emph{Internship supervisor :} & ~~~~~ & \emph{Internship advisor :}\\ 
-				Carmen \bsc{Garcia Mateo} & ~~~~~ & Mounim \bsc{El Yacoubi} \\
-				~ & ~~~~~ & Sonia \bsc{Garcia}
+				Carmen \textsc{Garcia Mateo} & ~~~~~ & Mounim \textsc{El Yacoubi} \\
+				~ & ~~~~~ & Sonia \textsc{Garcia}
 			\end{tabular}
 			
 		\end{center}
@@ -30,7 +53,7 @@
 			\includegraphics[scale=0.3]{ressources/tsp.jpg}
 			\\[0.5cm]
 			\rule{\textwidth}{0.2mm}
-			\\[1cm]h
+			\\[1cm]
 			April 2015 - September 2015
 		\end{center}
 		
@@ -40,7 +63,7 @@
 	
 	\newpage
 	
-	\section*{Thanks}
+	\section*{Acknowledgments}
 	
 	~\\[0.5cm]
 	I would like to thank all the people that have contributed to the success of this internship.
@@ -119,11 +142,11 @@
 		\includegraphics[scale=0.28]{ressources/corr2}
 		\captionof{figure}{Correlation of the 6373 features available in training set}
 	\end{center}
+	\vspace{0.5cm}
 	
+	It appears, as expected, that the big majority (99,96\%) has an absolute correlation coefficient that is below 0,2, with a maximum of 0,34. After all, some test have still be done only using features with the highest correlation rates, but the results weren't good. The RMSE was lower than with the whole set of features, but it still remained too high to be mentioned here.
 	
-	It appears, as expected, that the big majority (99,96\%) has an absolute correlation coefficient that is below 0,2, with a maximum of 0,34. After all, some test have still be done, but the results weren't good. The RMSE was lower than with the whole set of features, but it still remained too high to be mentioned here.
-	
-	An exhaustive search could have been envisaged, but the number of possibilities was way to high to perform such a thing. Indeed if we look at the numbers, and if we consider that a feature has only two possibles states (chosen or not chosen), the number of possibilities will be
+	An exhaustive search about the possible combinations could have been envisaged, but the number of possibilities was way to high to perform such a thing. Indeed if we look at the numbers, and if we consider that a feature has only two possibles states (chosen or not chosen), the number of possibilities will be
 	
 	\begin{equation}
 	2^{6373} - 1 \approx 10^{1918}
@@ -137,10 +160,12 @@
 	
 	Where $T$ is the estimated age of the universe. Well, six months may be a little short to perform such a method.
 	
+	\chapter{Use of Genetic Algorithms}
+	
 	\section{On the origin of species by means of natural selection}
 	
-	Another way of selection had to be chosen. The one I was familiar with and which could present interesting result was the use of genetic algorithm. This kind of algorithm can be used in order to find, not necessarily the best, but at least a solution that is really close to the optimal one. This kind of algorithm is inspired by the theory of evolution of Charles Darwin in \cite{darwin1859origins}. Indeed, a population will be created initially, the most efficient individuals will survive while the least adapted to the environment will die. As a living population, the remaining individuals will reproduce, introducing some mutation to the children. This cycle is repeated until an appropriate solution (individual) is found by the process.\\\\
-	Here is the principle of the algorithm. You need to have a problem, and a function (also called fitness) which will determine the “score” of the individual which represent a possible solution. An individual is a possible solution, but it doesn't have to be close to any optimum (as we don't know them, or if they even exist). For example, for our problem, an individual can be a $6373$-size binary vector that will represent if a feature i is ( $individual[i] = 1$) or is not ($individual[i] = 0$) selected for the current solution. We suppose here that the fitness is known (the choice of the fitness will be discussed later).
+	Another way of selection had to be chosen. The one I was familiar with and which could present interesting results was the use of genetic algorithm. This kind of algorithm can be used in order to find, not necessarily the best, but at least a solution that is really close to the optimal one. This kind of algorithm is inspired by the theory of evolution of Charles Darwin  \cite{darwin1859origins}. Indeed, a population will be created initially, then the most efficient individuals will survive while the least adapted to the environment will die. As a living population, the remaining individuals will reproduce, introducing some mutation to the children. This cycle is repeated until an appropriate solution (individual) is found by the process.\\\\
+	Here is the principle of the algorithm. You need to have a problem, and a function (also called fitness) which will determine the “score” of the individual which represents a possible solution. An individual is a possible solution, but it doesn't have to be close to any optimum (as we don't know them yet, or if they even exist). For example, for our problem, an individual can be a $6373$-size binary vector that will represent if a feature i is ( $individual[i] = 1$) or is not ($individual[i] = 0$) selected for the current solution. We suppose here that the fitness is known (the choice of the fitness will be discussed later).
 	The initialization of the algorithm consists in a production of a population of N different individuals. For each individual, the algorithm compute its score using the fitness function. When it is done, a first selection is done. A fixed percentage of the population is chosen (50\% has been used here), and the percentage of the population with the highest score are kept, the others are trashed. Those 50\% will be the elite part of the population. After that, in order to create a whole new population, the remaining individuals will reproduce: two will be chosen at random, then their “genes” (which are here represented by the selection of some features) will be crossed in order to get a new individual. In order to simplify the computation cost, a section is randomly chosen, and the first part of the child consists in a copy from the beginning to section of the first parent, whereas the second and last part of the child will consist in a copy from the section to the end of the second parent. The following figure sum up the reproduction process:
 	
 	\vspace{1cm}
@@ -150,17 +175,11 @@
 	\end{center}
 	
 	\vspace{1cm}
-	Children created this way will represent 25\% of the new population. Here again, the percentage is fixed at the beginning of the algorithm. The idea behind this reproduction process is that if two individuals have a relative good score, the score of their possible child is more likely to be good rather than the score of a totally random child. The same process is visible in nature, if two individuals are more adapted to their environment, their child is more likely to survive later.
+	Children created this way will represent 25\% of the new population. Here again, the percentage is fixed at the beginning of the algorithm. The idea behind this reproduction process is that if two individuals have a relative good score, the score of their possible child is more likely to be good rather than the score of a totally random child. The same process is visible in nature, if two individuals are more adapted to their environment, their childr is more likely to survive later.
 	
-	The second process that will make the population evolve to a possible optimum, is the process of mutation. As is nature, when a new individual is born, it might appears some modifications in its genotype that will modify its possible actions toward its environment. The same idea is used in genetic algorithm. A random individual is chosen in the elite part of the current population, and some mutation are randomly introduced in its genotype. The choice of a random individual rather than a child has been preferred for the simple reason of the additional computation cost that the creation of a child would have entailed. To create a mutation, a vector of the same size than the individual chosen is created, and each coordinate is randomly set to 0 or 1 using a Bernoulli distribution with a probability of success designed to put a fixed percentage of mutation in the whole genotype. Then we perform a “exclusive or” between the initial vector and the mutation vector to finally get the new individual. Here is summed up the mutation process:
+	The second process that will make the population evolve to a possible optimum, is the process of mutation. As is nature, when a new individual is born, it might appears some modifications in its genotype that will modify its possible actions toward its environment. The same idea is used in genetic algorithm. A random individual is chosen in the elite part of the current population, and some mutation are randomly introduced in its genotype. The choice of a random individual rather than a child has been preferred for the simple reason of the additional computation cost that the creation of a child would have entailed. To create a mutation, a vector of the same size than the individual chosen is created, and each coordinate is randomly set to 0 or 1 using a Bernoulli distribution with a probability of success designed to put a fixed mean percentage of mutation in the whole genotype. Then we perform a “exclusive or” between the initial vector and the mutation vector to finally get the new individual. Here is summed up the mutation process:
 	
-	\vspace{1cm}
-	\begin{center}
-		\includegraphics[scale=0.65]{ressources/ag2}
-		\captionof{figure}{Mutation process for genetic algorithm}
-	\end{center}
-	\newpage
-	
+	\vspace{0.5cm}
 	\begin{center}
 		\begin{tabular}{|l|c|c|}
 			\hline \textbf{XOR} & \textbf{0} & \textbf{1}\\
@@ -170,28 +189,36 @@
 		\end{tabular}
 		\captionof{table}{Logic table of XOR}
 	\end{center}
+	
+	\vspace{1cm}
+	\begin{center}
+		\includegraphics[scale=0.65]{ressources/ag2}
+		\captionof{figure}{Mutation process for genetic algorithm}
+	\end{center}
+	
+	\vspace{1cm}
+	
+	This process will create 25\% of the new population during each generation. Now, at each generation, the genetic algorithm create a whole new population of possible solutions :
+	
+	\begin{itemize}
+		\item 50\% via elitism
+		\item 25\% via reproduction
+		\item 25\% via mutation		
+	\end{itemize}	
 	\vspace{0.5cm}
 	
-	This process will create 25\% of the new population during each generation.
-	
-	\vspace{0.5cm}
 	\begin{center}
 		\includegraphics[scale=0.5]{ressources/ag3}	
 		\captionof{figure}{Full process of a genetic algorithm}
 		\label{fig:gaprocess}
 	\end{center}
 	\vspace{1cm}
-	
-	Now, at each generation, the genetic algorithm create a whole new population of possible solutions :
-	- 50\% via elitism
-	- 25\% via reproduction
-	- 25\% via mutation
-	
-	After the new population is complete, their score (fitness) is computed, and another generation can begin. A summary of the whole process done during a genetic algorithm can be found on Fig \ref{fig:gaprocess}.
+
+	After the new population is complete, their score (fitness) is computed, and if the best result is not good enough, another generation can begin. A summary of the whole process done during a genetic algorithm can be found on Fig \ref{fig:gaprocess}.
 	
 	\section{Fitness and results}
 	
-	About the most important part of the algorithm, the fitness function, the first thing that had to be looked at was the kind of solution that was needed. In the case of a feature selection, selected features should provide information on the desired output, while avoiding at most as possible any redundancy. A solution has been found in \cite{huang2007hybrid} and \cite{chahkandifeature}. The idea of the information provided by a random variable on another is represented by the use of the mutual information, the statistical tool which can be visualized as the proportion of information that the knowledge of a variable allows to get on another. Knowing that, the bigger the mutual information, the closer will be the two studied variables.
+	About the most important part of the algorithm, the fitness function, the first thing that had to be looked at was the kind of solution that was needed. In our case and because we wanted a features selection, selected features should provide information on the desired output, while avoiding at most as possible any redundancy. A solution has been found in \cite{huang2007hybrid} and \cite{chahkandifeature}. The idea of the information provided by a random variable on another is represented by the use of the mutual information, the statistical tool which can be visualized as the proportion of information that the knowledge of a variable allows to get on another. Knowing that, the bigger the mutual information, the closer will be the two studied variables.
 	
 	Knowing two random variables, the mutual information can be computed this way
 	
@@ -227,9 +254,7 @@
 	
 	Knowing the whole process, it is possible now to launch a first selection through possible features. Parameters have been set in such a way that approximately 200 features are chosen in the first population, and 10\% of the individual can mutate in each generation. The most expensive part in term of computational resources is the defintion of I(X,Y), because the process has to determine the three distribution P(X), P(Y) and P(X,Y). This is also why the number of features selected is so low in comparison of the global number of features. After 68 hours of training on the available servers in the university, a first individual has been selected, and now in order to test its efficiency, a second training is performed using only those about 200 features in order to see if a bigger reduction of the features could improve the results. The idea is the following : in the first training, the population has reached an area that is globally suitable for the current problem. Now that this is area is found, a more specific exploration can be performed in order to find the local (and potential global, but it can't be verified) optimum of the fitness function. The number of features has been divided by two, so the average length of vectors in the second population will be 100, and the mutation rate is again 10\%. After this second training (that has been a lot shorter than the first one), better solutions have been found, and the best one has been saved. A third attempt has been conducted, but the results have not been improved, as the best solution after training was still the solution of the second attempt.\\
 	
-	After this training phase, 98 features have been selected.
-	
-	\section{What about now}
+	After this training phase, 98 features have been selected.\\
 	
 	The numbers of features describing the database is now lower than the number samples. Assuming that the dimensionality reduction performed will describe more precisely the available data, another DBN training has been performed now using the set of 98 features. However, another problem appeared : due to the lack of data, a hard overfiting appeared, and the network only learned by heart all the samples present in the training base, and recognise almost none of the samples present in the test database. The first problem was to remove a possibly too complex representation in order to get a de-noised and simpler one, but now the problem is that there are not enough data. The second part of this internship has been to try to reprocess available data in order to get as much information as possible.
 	
@@ -276,7 +301,8 @@
 	
 	\vspace{0.5cm}
 	\begin{center}
-		\includegraphics[scale=0.7]{ressources/rbm}
+		\includegraphics[scale=0.5]{ressources/rbm}
+		\vspace{0.3cm}
 		\captionof{figure}{Sample Restricted Boltzmann Machine}
 	\end{center}
 	\vspace{0.5cm}
@@ -365,13 +391,15 @@
 	\\\\
 	Starting with a random input vector $v^0$, Gibbs sampling steps are as follows:
 	
-	\begin{enumerate}
-		\item Initialize $v^0$
+	\begin{itemize}
+		\item Initialize $ \textbf{v}^0 $
 		\item loop:
-		\item sample $h^i \sim p(h | v^i)$
-		\item sample $v^{i+1} \sim p(v | h^i)$
-		\item $i \leftarrow i+1$
-	\end{enumerate}
+		\begin{enumerate}
+			\item sample $h^i \sim p(\textbf{h} | v^i)$
+			\item sample $v^{i+1} \sim p(\textbf{v} | h^i)$
+			\item $i \leftarrow i+1$
+		\end{enumerate}
+	\end{itemize}
 
 	\vspace{0.5cm}
 	\begin{center}
@@ -427,9 +455,10 @@
 	RBM. The output of one RBM is the state of its hidden neurons and serves as the 
 	input of the next RBM.
 	
-	\vspace{0.5cm}
+	\vspace{1cm}
 	\begin{center}
-		\includegraphics{ressources/dbn}
+		\includegraphics[scale=0.4]{ressources/dbn}
+		\vspace{0.5cm}
 		\captionof{figure}{Structure of a Deep Beelief Network}
 	\end{center}
 	\vspace{0.5cm}
@@ -634,7 +663,7 @@
 			\hline \textbf{Missclassification proportion} & $13\% \pm 1\%$ & $67\% \pm 1\%$ & $19\% \pm 1\%$ \\
 			\hline
 		\end{tabular}
-		\captionof{table}{Proportion of each class in the missclassification set}
+		\captionof{table}{Proportion of each class in the misclassification set}
 	\end{center}
 	\vspace{0.5cm}
 	
@@ -675,7 +704,7 @@
 			\hline \textbf{Proportion} & $3\% \pm 1\%$ & $65.5\% \pm 1\%$ & $31\% \pm 1\%$ \\
 			\hline
 		\end{tabular}
-		\captionof{table}{Proportion of each class in the missclassification set with equalized database}
+		\captionof{table}{Proportion of each class in the misclassification set with equalized database}
 		\label{results}
 	\end{center}
 	\vspace{0.5cm}

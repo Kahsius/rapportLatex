@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: test.aux
+The top-level auxiliary file: rapport.aux
 The style file: plain.bst
 Database file #1: biblio.bib
 Warning--to sort, need author or key in updrsguide
@@ -8,7 +8,7 @@ Warning--empty journal in chahkandifeature
 Warning--empty year in chahkandifeature
 You've used 20 entries,
             2118 wiz_defined-function locations,
-            622 strings with 7930 characters,
+            622 strings with 7936 characters,
 and the built_in function-call counts, 7247 in all, are:
 = -- 727
 > -- 335

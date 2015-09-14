@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.7.28)  11 SEP 2015 17:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.7.28)  14 SEP 2015 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -955,10 +955,10 @@ Overfull \hbox (18.63779pt too wide) in paragraph at lines 581--582
 File: ressources/tr1.png Graphic file (type png)
 
 <use ressources/tr1.png>
-Package pdftex.def Info: ressources/tr1.png used on input line 602.
+Package pdftex.def Info: ressources/tr1.png used on input line 605.
 (pdftex.def)             Requested size: 342.52562pt x 225.08826pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 607--608
+Underfull \hbox (badness 10000) in paragraph at lines 610--611
 
  []
 
@@ -966,97 +966,97 @@ Underfull \hbox (badness 10000) in paragraph at lines 607--608
 <ressources/of1.png, id=115, 421.575pt x 316.18124pt>
 File: ressources/of1.png Graphic file (type png)
  <use ressources/of1.png>
-Package pdftex.def Info: ressources/of1.png used on input line 614.
+Package pdftex.def Info: ressources/of1.png used on input line 617.
 (pdftex.def)             Requested size: 177.06029pt x 132.79521pt.
 
-Overfull \hbox (18.63779pt too wide) in paragraph at lines 614--615
+Overfull \hbox (18.63779pt too wide) in paragraph at lines 617--618
 [][] 
  []
 
 <ressources/of2.png, id=116, 421.575pt x 316.18124pt>
 File: ressources/of2.png Graphic file (type png)
  <use ressources/of2.png>
-Package pdftex.def Info: ressources/of2.png used on input line 620.
+Package pdftex.def Info: ressources/of2.png used on input line 623.
 (pdftex.def)             Requested size: 177.06029pt x 132.79521pt.
 
-Overfull \hbox (18.63779pt too wide) in paragraph at lines 620--621
+Overfull \hbox (18.63779pt too wide) in paragraph at lines 623--624
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 628--629
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
 
  []
 
 [24 <./ressources/of1.png (PNG copy)> <./ressources/of2.png (PNG copy)>]
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 712--713
+Underfull \hbox (badness 10000) in paragraph at lines 715--716
 
  []
 
 [26]
 Chapter 6.
 
-Overfull \hbox (1.60712pt too wide) in paragraph at lines 718--718
+Overfull \hbox (1.60712pt too wide) in paragraph at lines 721--721
 |\T1/LinuxBiolinumT-TLF/b/n/24.88 The ex-pe-ri-ence given by this in-tern-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--723
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 724--725
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--732
+Underfull \hbox (badness 10000) in paragraph at lines 733--735
 
  []
 
 [27
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 736--737
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 744--745
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 747--749
+Underfull \hbox (badness 10000) in paragraph at lines 750--752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 750--751
+Underfull \hbox (badness 10000) in paragraph at lines 753--754
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 752--753
+Underfull \hbox (badness 10000) in paragraph at lines 755--756
 
  []
 
 [30]
 Chapter 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 758--761
+Underfull \hbox (badness 10000) in paragraph at lines 761--764
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 758--761
+Underfull \hbox (badness 10000) in paragraph at lines 761--764
 
  []
 
@@ -1103,7 +1103,7 @@ blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on rapport.pdf (34 pages, 1139274 bytes).
+Output written on rapport.pdf (34 pages, 1140351 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  130 compressed objects within 2 object streams
